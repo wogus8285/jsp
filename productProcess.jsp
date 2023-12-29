@@ -27,23 +27,36 @@ out.println("분류 : "+pcate+"<br />");
 out.println("재고수 : "+pstock+"<br />");
 out.println("상태 : "+stat+"<br />");
 
+try{
 
-String sql="insert into product values(?,?,?,?,?,?,?,?)";
-pstmt=conn.prepareStatement(sql);
-pstmt.setString(1,pcode);
-pstmt.setString(2,pname);
-pstmt.setString(3,pprice);
-pstmt.setString(4,pinfo);
-pstmt.setString(5,pcompany);
-pstmt.setString(6,pcate);
-pstmt.setString(7,pstock);
-pstmt.setString(8,stat);
-pstmt.executeUpdate();
-%>
-
-<script> 
-  alert("저장성공");
-  historys.black-1
-</script>
-
+  String sql="insert into product values(?,?,?,?,?,?,?,?)";
+  pstmt=conn.prepareStatement(sql);
+  pstmt.setString(1,pcode);
+  pstmt.setString(2,pname);
+  pstmt.setString(3,pprice);
+  pstmt.setString(4,pinfo);
+  pstmt.setString(5,pcompany);
+  pstmt.setString(6,pcate);
+  pstmt.setString(7,pstock);
+  pstmt.setString(8,stat);
+  pstmt.executeUpdate();
+  %>
+  
+  <script> 
+    alert("저장성공");
+    historys.black(-1)
+  </script>
+  
+<%
+}catch(Exception e){
+  %>
+  
+  <script> 
+    alert("저장실패");
+    historys.black(-1)
+  </script>
+  
+<%
+  e.printStackTrace();
+}
 %> 
