@@ -11,7 +11,7 @@ pageEncoding="UTF-8" %>
     <title>Document</title>
   </head>
   <body>
-    <form method="post" action="productProcess.jsp">
+    <form name="form" method="post" action="productProcess.jsp">
       <div class="test">
         <h1>상품등록화면</h1>
         <ul>
@@ -61,15 +61,15 @@ pageEncoding="UTF-8" %>
             <p>상태</p>
             <p class="p2">
               <label
-                ><input type="checkbox" name="stat" value="신규 제품" />신규
+                ><input type="radio" name="stat" value="신규 제품" />신규
                 제품</label
               >
               <label
-                ><input type="checkbox" name="stat" value="중고 제품" />중고
+                ><input type="radio" name="stat" value="중고 제품" />중고
                 제품</label
               >
               <label
-                ><input type="checkbox" name="stat" value="재생 제품" />재생
+                ><input type="radio" name="stat" value="재생 제품" />재생
                 제품</label
               >
             </p>
@@ -77,11 +77,29 @@ pageEncoding="UTF-8" %>
         </ul>
 
         <div class="btn">
-          <input type="submit" value="저장" />
-          <input type="reset" value="취소" />
+          <input class="btn1" type="button" value="저장" onclick="check()" />
+          <input class="btn2" type="reset" value="취소" />
         </div>
       </div>
     </form>
     <!--  -->
+
+    <script>
+      function check() {
+        if (document.form.pcode.value == '') {
+          alert('상품코드를 입력하세요.')
+          // 상품코드 쪽으로 커서가 가는게 포커스
+          document.form.pcode.focus()
+          return false
+        }
+        if (document.form.pname.value === '') {
+          alert('상품명을 입력하세요.')
+          document.form.pname.focus()
+          return false
+        }
+
+        document.form.submit()
+      }
+    </script>
   </body>
 </html>
